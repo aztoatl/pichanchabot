@@ -94,11 +94,17 @@ def responde(message):
         time.sleep(15)
 
 #this will post a file just in case a NSFW content  is in the chat
+# @bot.message_handler(commands=['shell', 'al', 'escudo'])
+# def escudito(message):
+#     cid = message.chat.id
+#     img = HOMEDIR+'escudo/safe.png'
+#     bot.send_photo(cid, open( img, 'rb'))
+
 @bot.message_handler(commands=['shell', 'al', 'escudo'])
 def escudito(message):
-    cid = message.chat.id
-    img = HOMEDIR+'escudo/safe.png'
-    bot.send_photo(cid, open( img, 'rb'))
+    for i in range(1,100):
+        bot.reply_to(message,"soyculo")
+    
 
 
 def main():
