@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pichabot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pichabot
+  template:
+    metadata:
+      labels:
+        app: pichabot
+    spec:
+      containers:
+      - name: bot
+        image: aztoatl/pichabot:latest  # Cambia esto por tu imagen si es distinta
+        env:
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: pichabot-secret
+              key: API_KEY
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: pichabot-secret
+              key: DB_HOST
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: pichabot-secret
+              key: DB_USER
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: pichabot-secret
+              key: DB_PASS
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: pichabot-secret
+              key: DB_NAME
