@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:11
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: shadowbo_pichancha
+      MYSQL_USER: pedrito
+      MYSQL_PASSWORD: pedritopass
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  pichabotitobot:
+    build: .
+    depends_on:
+      - mariadb
+    environment:
+      API_KEY: API_KEY
+      DB_HOST: mariadb
+      DB_USER: TEST
+      DB_PASS: TEST
+      DB_NAME: TEST
+    restart: unless-stopped
+
+volumes:
+  mariadb_data:
