@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: bot
-        image: aztoatl/pichabot:latest  # Cambia esto por tu imagen si es distinta
+        image: aztoatl/pichabot:latest  
         env:
         - name: API_KEY
           valueFrom:
